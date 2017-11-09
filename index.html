@@ -8,27 +8,26 @@
   <script src="aframe-layout-component.js"></script>
   <script src="aframe-event-set-component.js"></script>
   <script src="nunjucks.js"></script>
+  <script src="aframe-template-component.js"></script>
 </head>
 
 <body>
 <a-scene>
   <a-assets>
+    <script id="baseinteractionobject" type="text/x-nunjucks-template">
+    //Base code for props
+      <a-box height="1.5" depth="1.5" width="1.5"
+            material="shader: flat"
+            event-set__enter="_event: mouseenter; scale: 1.2 1.2 1"
+            event-set__leave="_event: mouseleave; scale: 1 1 1"
+            class="scene"
+      ></a-box>
+    </script>
   </a-assets>
+    <a-sky color="#6EBAA7"></a-sky>
+    <a-plane color="#CCC" height="20" width="20" rotation="-90 0 0"></a-plane> <!--a basic floor plane-->
 
-<script id="BIO" type="text/x-nunjucks-template">
-  <a-entity id="baseInteractObject"
-        geometry="primitive: box; height: 1; depth: 1; width: 1"
-        class="scene"
-        event-set__enter="_event: mouseenter; scale: 1.2 1.2 1"
-        event-set__leave="_event: mouseleave; scale: 1 1 1"
-  ></a-entity>
-</script>
-
-  <a-sky color="#6EBAA7"></a-sky>
-  <a-plane color="#CCC" height="20" width="20" rotation="-90 0 0"></a-plane> <!--a basic floor plane-->
-
-
-<a-entity template="src: #BIO" ></a-entity>
+    <a-entity template="src: #baseinteractionobject"  position="0 0 10" ></a-entity>
 
     <a-entity layout="type: circle; radius: 4" position="0 0.5 0" rotation="0 10 0"></a-entity> <!--the circle hud-->
     <a-entity position="0 0 0" id="player">
