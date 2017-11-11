@@ -19,15 +19,13 @@
     <script id="baseinteractionobject" type="text/x-nunjucks-template">
     //Base code for props
       <a-box height="1.5" depth="1.5" width="1.5"
-            event-set__enter="_event: mouseenter; scale: 1.2 1.2 1"
-            event-set__leave="_event: mouseleave; scale: 1 1 1"
             material="color: {{ ocol }}"
             class="scene"
       ></a-box>
     </script>
   </a-assets>
-    <!--the sky! --><a-sky color="#6EBAA7"></a-sky>
-     <!--a basic floor plane--> <a-plane color="#CCC" height="20" width="20" rotation="-90 0 0"></a-plane>
+  <!--the sky! --><a-sky color="#6EBAA7"></a-sky>
+  <!--a basic floor plane--> <a-plane color="#CCC" height="20" width="20" rotation="-90 0 0"></a-plane>
 
   <!-- a placeholder for the base object--> <a-entity id="testObjEntity" template="src: #baseinteractionobject" data-ocol="#33FE77" position="0 0 10" ></a-entity>
   <!--the begin screen -->  <a-entity id="beginscreen" position="0 2.033 -1.5" class="scene"
@@ -54,30 +52,33 @@
 
 <script>
 var scene = document.querySelector('a-scene');
-if (scene.hasLoaded === true) { run(); } else { scene.addEventListener('loaded', run);}
+if (scene.hasLoaded === true) { run(); } else { scene.addEventListener('loaded', run());}
 
-function run() {
+function run() {    //starting logic
 var beginScreen = document.querySelector('#beginscreen');
   beginScreen.addEventListener('click', function(){
-    setTimeout(function(){
     this.setAttribute('visible', 'false');
     this.setAttribute('class', 'none'); //stop overlay
     this.setAttribute('position', '0 -10 -1.5');
-    }.bind(this), 500);
+    setTimeout(function(){
     beginescape();
+    }.bind(this), 1000);
   })
-
 }
 
-function beginescape() {
+function beginescape() {  //begin escape logic
 var timer = document.querySelector('#timer')
 var testobj = document.querySelector('#testObjEntity');
 var time = 120;
+var timerpause = false;
 
 setInterval(SetTimer, 1000);
 
 function SetTimer(){
-  if (time === 1) {
+  if (timerpause === true){
+
+  }
+  else if (time === 1) {
 
   }
   else {
@@ -88,6 +89,7 @@ function SetTimer(){
 
     testobj.addEventListener('click', function (){
       this.setAttribute('position', '0 0 11');
+      timerpause = true;
     });
 }
 </script>
