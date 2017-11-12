@@ -16,22 +16,26 @@
 
 <a-scene>
   <a-assets>
-    <script id="baseinteractionobject" type="text/x-nunjucks-template">
-    //Base code for props
-      <a-box height="1.5" depth="1.5" width="1.5"
-            material="color: {{ ocol }}"
-            class="scene"
-      ></a-box>
-    </script>
-  </a-assets>
-  <!--the sky! --><a-sky color="#6EBAA7"></a-sky>
-  <!--a basic floor plane--> <a-plane color="#CCC" height="20" width="20" rotation="-90 0 0"></a-plane>
 
-  <!-- a placeholder for the base object--> <a-entity id="testObjEntity" template="src: #baseinteractionobject" data-ocol="#33FE77" position="0 0 10" ></a-entity>
+  </a-assets>
+
+  <!--the sky! --><a-sky color="#6EBAA7"></a-sky>
+  <!--the basic room with lights--> <a-plane color="#CCC" height="10" width="10" rotation="-90 0 0"></a-plane>
+                        <a-plane color="#CCC" height="10" width="10" position="0 5 0" rotation="90 0 0"></a-plane>
+                        <a-plane color="#CCC" height="10" width="10" position="0 0 -5" material="" geometry=""></a-plane>
+                        <a-plane color="#CCC" height="10" width="10" position="0 0 5" rotation="0 180 0"></a-plane>
+                        <a-plane color="#CCC" height="10" width="10" position="-5 0 0" rotation="0 90 0"></a-plane>
+                        <a-plane color="#CCC" height="10" width="10" position="5 0 0" rotation="0 -90 0"></a-plane>
+                        <a-light tpe="ambient" color="#1e261b" position="0 -0.466 0" light="intensity:0.11;type:ambient"></a-light>
+                        <a-light tpe="point" color="##fcf6c7" intensity="0.5" decay="1" distance="7" position="0 4.544 0" light="decay:1.54;distance:7.39;intensity:0.5;type:point;color:#83861a"></a-light>
+
+  <!-- a placeholder for the base object, now just on its own--> <a-entity id="testObjEntity" data-ocol="#33FE77" geometry="primitive: box; height:1.5; depth:1.5; width:1.5" position="0 0 4" ></a-entity>
+  <!-- light test--> <a-entity id="testLight"  geometry="primitive: sphere; radius: 1;" class="scene" light="type: point; intensity: 0.5; distance: 50; decay: 2"  position="0 2 4" ></a-entity>
+
   <!--the begin screen -->  <a-entity id="beginscreen" position="0 2.033 -1.5" class="scene"
                                                 <a-text="" value="Title" width="11" text__titletext="zOffset:0.021;baseline:bottom;width:7.7;height:0.11;align:center;value:Title;color:#070707"
                                                 text__starttext="zOffset:0.02;baseline:top;width:5.29;lineHeight:7.05;letterSpacing:0.41;align:center;wrapCount:42.22;tabSize:4.08;color:#000000;value:Stare here to start"
-                                                geometry="width:1.9100000000000001;primitive:plane">
+                                                geometry="width:2;primitive:plane;color:blue">
                                                         <!--text="width:11; tabSize:4.82; color:#0b0b0b; align:center; value:Title"
                                                         text="width:7; tabSize:4.82; color:#0b0b0b; align:center; value:stare here to start"
                                                         geometry="primitive: plane; position: 0 -1 0" -->
@@ -69,6 +73,7 @@ var beginScreen = document.querySelector('#beginscreen');
 function beginescape() {  //begin escape logic
 var timer = document.querySelector('#timer')
 var testobj = document.querySelector('#testObjEntity');
+var testlight = document.querySelector('#testLight')
 var time = 120;
 var timerpause = false;
 
@@ -90,6 +95,10 @@ function SetTimer(){
     testobj.addEventListener('click', function (){
       this.setAttribute('position', '0 0 11');
       timerpause = true;
+    });
+    testlight.addEventListener('click', function (){
+      this.setAttribute('light', {intensity: 0});
+
     });
 }
 </script>
