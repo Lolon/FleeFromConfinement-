@@ -26,13 +26,27 @@
                         <a-plane color="#CCC" height="10" width="10" position="0 0 5" rotation="0 180 0"></a-plane>
                         <a-plane color="#CCC" height="10" width="10" position="-5 0 0" rotation="0 90 0"></a-plane>
                         <a-plane color="#CCC" height="10" width="10" position="5 0 0" rotation="0 -90 0"></a-plane>
-                        <a-light tpe="ambient" color="#1e261b" position="0 -0.466 0" light="intensity:0.11;type:ambient"></a-light>
-                        <a-light tpe="point" color="##fcf6c7" intensity="0.5" decay="1" distance="7" position="0 4.544 0" light="decay:1.54;distance:7.39;intensity:0.5;type:point;color:#83861a"></a-light>
+                        <a-light tpe="ambient" color="#1e261b" position="0 -0.466 0" light="intensity:0.5;type:ambient"></a-light>
+                        <a-light tpe="point" color="##fcf6c7" intensity="0.5" decay="1" distance="7" position="0 4.544 0" light="decay:1.54;distance:7.39;intensity:1;type:point;color:#83861a"></a-light>
+
+<!-- all the objects -->
+<a-entity position="0 2.108 -5.409" id="Door" geometry="width:2.9800000000000004;height:4.32" material="roughness:0.54;color:#494949"></a-entity>
+<a-entity position="-1.616 0.394 3.521" id="bed" geometry="width:6.73;depth:2.98" material="roughness:1;color:#8486ec"></a-entity>
+<a-entity position="-3.815 -0.44 -3.87" id="manhole" geometry="primitive:cylinder" material=""></a-entity>
+<a-entity position="3.841 0.43 3.878" id="table" geometry="height:1.73;depth:2.01;width:2" material="color:#72594e"></a-entity>
+<a-entity position="3.792 1.88 3.82" id="lamp" geometry="radiusBottom:0.67;primitive:cone" material="emissiveIntensity:0.19999999999999996;emissive:#d56715" light="intensity:0;decay:0;color:#ea341a;type:point"></a-entity>
+<a-entity position="-5.403 2.592 0.072" rotation="45 0 0" id="shape1" geometry="" material="emissive:#2528b4;flatShading:true"></a-entity>
+<a-entity position="-5.403 2.592 1.493" rotation="0 0 90" id="shape2" geometry="radius:0.59;primitive:cylinder" material="emissive:#a822b7;flatShading:true"></a-entity>
+<a-entity position="-5.403 2.592 -1.376" rotation="0 0 90" id="shape3" geometry="" material="emissive:#30b821;flatShading:true"></a-entity>
+<a-entity position="4.445 0.449 -4.433" rotation="0 0 180" id="plantpot" geometry="radiusTop:0.36;radiusBottom:0.59;primitive:cone" material="roughness:0.16999999999999998;color:#91562f"></a-entity>
+<a-entity position="3.825 0.906 3.016" id="drawer" geometry="width:1.55;height:0.31000000000000005" material="roughness:1;color:#a39972"></a-entity>
+<a-entity position="4.365 0.654 -0.439" id="itemsBox" geometry="height:1.37;depth:3.84;width:1.13" material=""></a-entity>
+
 
   <!-- a placeholder for the base object, now just on its own--> <a-entity id="testObjEntity" data-ocol="#33FE77" geometry="primitive: box; height:1.5; depth:1.5; width:1.5" position="0 0 4" ></a-entity>
   <!-- light test--> <a-entity id="testLight"  geometry="primitive: sphere; radius: 1;" class="scene" light="type: point; intensity: 0.5; distance: 50; decay: 2"  position="0 2 4" ></a-entity>
 
-  <!--the begin screen -->  <a-entity id="beginscreen" position="0 2.033 -1.5" class="scene"
+  <!--the begin screen -->  <a-entity id="beginscreen" position="0 3.437 -4.736" class="scene"
                                                 <a-text="" value="Title" width="11" text__titletext="zOffset:0.021;baseline:bottom;width:7.7;height:0.11;align:center;value:Title;color:#070707"
                                                 text__starttext="zOffset:0.02;baseline:top;width:5.29;lineHeight:7.05;letterSpacing:0.41;align:center;wrapCount:42.22;tabSize:4.08;color:#000000;value:Stare here to start"
                                                 geometry="width:2;primitive:plane;color:blue">
@@ -40,10 +54,10 @@
                                                         text="width:7; tabSize:4.82; color:#0b0b0b; align:center; value:stare here to start"
                                                         geometry="primitive: plane; position: 0 -1 0" -->
                                                   &gt;</a-entity>
-  <!--Timer-->       <a-text id="timer" value="120" position="0 2 -1.75" text="width:12.03;color:#ff171d" align="center"></a-text>
-  <!--circle hud-->  <a-entity layout="type: circle; radius: 4" position="0 0.5 0" rotation="0 10 0"></a-entity>
-  <!--player -->  <a-entity position="0 0 0" id="player">
-                  <a-camera>
+  <!--Timer-->       <a-text id="timer" value="120" position="0 3.438 -4.887" text="width:12.03;color:#ff171d" align="center"></a-text>
+  <!--circle hud-->  <a-entity layout="type: circle; radius: 40" position="0 0.5 0" rotation="0 10 0"></a-entity>
+  <!--player -->  <a-entity position="0 1.6 0" id="player">
+                  <a-camera >
                       <a-cursor fuse id="cursor" raycaster="objects: .scene"
                         animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
                         animation__fusing="property: scale; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
