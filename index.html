@@ -146,11 +146,11 @@ function SetTimer(){
       }
     });
     Drawer.addEventListener('click', function (){
-      if (isDrawOn === true){
         console.log('drawer!');
+
         Key.setAttribute('visible', 'true');
         IsKeyFound = true;
-      }
+    
     });
     Door.addEventListener('click', function (){
       if (IsKeyFound === true){
