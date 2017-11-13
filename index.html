@@ -16,21 +16,23 @@
 
 <a-scene>
   <a-assets>
-
+    <img id="wall" src="assets/walls.png">
+    <img id="floor" src="assets/floor.png">
+    <img id="ceiling" src="assets/ceiling.png">
   </a-assets>
 
   <!--the sky! --><a-sky color="#6EBAA7"></a-sky>
-  <!--the basic room with lights--> <a-plane color="#CCC" height="10" width="10" rotation="-90 0 0"></a-plane>
-                        <a-plane color="#CCC" height="10" width="10" position="0 5 0" rotation="90 0 0"></a-plane>
-                        <a-plane color="#CCC" height="10" width="10" position="0 0 -5" material="" geometry=""></a-plane>
-                        <a-plane color="#CCC" height="10" width="10" position="0 0 5" rotation="0 180 0"></a-plane>
-                        <a-plane color="#CCC" height="10" width="10" position="-5 0 0" rotation="0 90 0"></a-plane>
-                        <a-plane color="#CCC" height="10" width="10" position="5 0 0" rotation="0 -90 0"></a-plane>
+  <!--the basic room with lights--> <a-plane color="#CCC" height="10" width="10" rotation="-90 0 0" material="src: floor"></a-plane>
+                        <a-plane color="#CCC" height="10" width="10" position="0 7 0" rotation="90 0 0" material="src: wall"></a-plane>
+                        <a-plane color="#CCC" height="7" width="10" position="0 3.5 -5" material="src: wall" ></a-plane>
+                        <a-plane color="#CCC" height="7" width="10" position="0 3.5 5" rotation="0 180 0" material="src: ceiling"></a-plane>
+                        <a-plane color="#CCC" height="7" width="10" position="-5 3.5 0" rotation="0 90 0" material="src: wall"></a-plane>
+                        <a-plane color="#CCC" height="7" width="10" position="5 3.5 0" rotation="0 -90 0" material="src: wall"></a-plane>
                         <a-light tpe="ambient" color="#1e261b" position="0 -0.466 0" light="intensity:0.5;type:ambient"></a-light>
                         <a-light tpe="point" color="##fcf6c7" intensity="0.5" decay="1" distance="7" position="0 4.544 0" light="decay:1.54;distance:7.39;intensity:1;type:point;color:#83861a"></a-light>
 
 <!-- all the objects -->
-<a-entity position="0 2.108 -5.409" id="Door" geometry="width:3;height:4.32" material="roughness:0.54;color:#494949" class="scene"></a-entity>
+<a-entity position="0 2.108 -5.409" id="door" geometry="width:3;height:4.32" material="roughness:0.54;color:#494949" class="scene"></a-entity>
 <a-entity position="-1.616 0.394 3.521" id="bed" geometry="width:6.73;depth:2.98" material="roughness:1;color:#8486ec"></a-entity>
 <a-entity position="-3.815 -0.44 -3.87" id="manhole" geometry="primitive:cylinder" material="" class="scene"></a-entity>
 <a-entity position="3.841 0.43 3.878" id="table" geometry="height:1.73;depth:2.01;width:2" material="color:#72594e"></a-entity>
@@ -51,11 +53,22 @@
   <!--the begin screen -->  <a-entity id="beginscreen" position="0 3.437 -4.736" class="scene"
                                                 <a-text="" value="Title" width="11" text__titletext="zOffset:0.021;baseline:bottom;width:7.7;height:0.11;align:center;value:Title;color:#070707"
                                                 text__starttext="zOffset:0.02;baseline:top;width:5.29;lineHeight:7.05;letterSpacing:0.41;align:center;wrapCount:42.22;tabSize:4.08;color:#000000;value:Stare here to start"
-                                                geometry="width:2;primitive:plane;color:blue">
+                                                geometry="width:2;primitive:plane;color:blue"
+                                                material="color:green">
                                                         <!--text="width:11; tabSize:4.82; color:#0b0b0b; align:center; value:Title"
                                                         text="width:7; tabSize:4.82; color:#0b0b0b; align:center; value:stare here to start"
                                                         geometry="primitive: plane; position: 0 -1 0" -->
                                                   &gt;</a-entity>
+                              <a-entity id="FailScreen" position="0 -10 -1.5" class="scene" visible="false"
+                                <a-text="" value="Title" width="11" text__titletext="value:You failed to escape;zOffset:0.021;baseline:bottom;width:7.7;height:0.11;align:center;color:#070707" text__starttext="value:Stare here to restart;zOffset:0.02;baseline:top;width:5.29;lineHeight:7.05;letterSpacing:0.41;align:center;wrapCount:42.22;tabSize:4.08;color:#000000"
+                                geometry="height:1.2;width:3.17;primitive:plane"
+                                material="width:512.52;emissive:red;flatShading:true;color:red">
+                              &gt;</a-entity>
+                              <a-entity id="WinScreen" position="0 -10 -1.5" class="scene" visible="false"
+                              <a-text="" value="Title" width="11" text__titletext="value:You escaped;zOffset:0.021;baseline:bottom;width:7.7;height:0.11;align:center;color:#070707" text__starttext="value:Stare here to start again;zOffset:0.02;baseline:top;width:5.29;lineHeight:7.05;letterSpacing:0.41;align:center;wrapCount:42.22;tabSize:4.08;color:#000000"
+                                      geometry="primitive:plane;height:1.2;width:3.17"
+                                      material="color:green;emissive:green;width:512.52;flatShading:true">
+                                      &gt;</a-entity>
   <!--Timer-->       <a-text id="timer" value="120" position="0 3.438 -4.887" text="width:12.03;color:#ff171d" align="center"></a-text>
   <!--circle hud-->  <a-entity layout="type: circle; radius: 40" position="0 0.5 0" rotation="0 10 0"></a-entity>
   <!--player -->  <a-entity position="0 1.6 0" id="player">
@@ -110,7 +123,7 @@ function SetTimer(){
 
   }
   else if (time === 1) {
-
+    Fail();
   }
   else {
     time = time - 1;
@@ -145,14 +158,36 @@ function SetTimer(){
     });
     Door.addEventListener('click', function (){
       if (IsKeyFound === true){
-
+        Fail();
       }
     });
     Manhole.addEventListener('click', function (){
       if (IsKeyFound === true){
-
+        console.log('Win!');
+        Win();
       }
     });
+
+function Win (){
+  var WinScreen = document.querySelector('#WinScreen')
+    timerpause = true;
+
+    WinScreen.setAttribute('visible','true');
+    WinScreen.setAttribute('position', '0 3.437 -4.539');
+    WinScreen.addEventListener('click', function (){
+      scene.reload();
+    })
+    }
+
+function Fail (){
+    var FailScreen = document.querySelector('#FailScreen')
+      timerpause = true;
+      FailScreen.setAttribute('visible','true');
+      FailScreen.setAttribute('position', '0 3.437 -4.592');
+      }
+    FailScreen.addEventListener('click', function (){
+      scene.reload();
+    })
 }
 </script>
 </body>
