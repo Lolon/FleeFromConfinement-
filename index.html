@@ -115,7 +115,7 @@ var time = 120;
 var timerpause = false;
 var isLightFound = false;
 var isDrawOn = false;
-var IsKeyFound = false;
+var isKeyFound = false;
 
 setInterval(SetTimer, 1000);
 
@@ -147,17 +147,19 @@ function SetTimer(){
     Drawer.addEventListener('click', function (){
         console.log('drawer!');
         EKey.setAttribute('visible', 'true');
-        IsKeyFound = true;
+        isKeyFound = true;
     });
     Door.addEventListener('click', function (){
       console.log('Door!');
-      if (IsKeyFound === true){
-
+      if (isKeyFound === true){
+        console.log('true!');
         Fail();
       }
     });
     Manhole.addEventListener('click', function (){
-      if (IsKeyFound === true){
+      console.log('manhole!');
+      if (isKeyFound === true){
+        console.log('true!');
 
         Win();
       }
