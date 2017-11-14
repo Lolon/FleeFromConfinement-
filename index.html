@@ -22,7 +22,7 @@
     <img id="door" src="assets/door.png">
     <img id="manhole" src="assets/manhole.png">
     <img id="wood" src="assets/wood.png">
-    <img id="key" src="assets/key.png">
+    <img id="Mkey" src="assets/key.png">
 
 
   </a-assets>
@@ -50,7 +50,7 @@
 <a-entity position="3.825 -10 3.016" id="drawer" geometry="width:1.55;height:0.31" material="roughness:1;src:#wood" class="scene"></a-entity>
 <a-entity position="4.365 0.654 -0.439" id="itemsBox" geometry="height:1.37;depth:3.84;width:1.13" material="src:#wood"></a-entity>
 <a-entity position="4.415 1.429 -1.227" rotation="0 0 90" id="Lightbulb" geometry="radius:0.1;height:0.36;primitive:cylinder" material="emissiveIntensity:0.49;emissive:#ea846a;color:#ea846a" visible="false"></a-entity>
-<a-entity position="4.366 1.338 0.069" id="key" geometry="height:0.0;width:0.28;depth:0.65" material="emissive:#d5cfaa;roughness:1;flatShading:true;opacity:0.89;transparent:true;src:[object HTMLImageElement]" visible="false" rotation="0 90 0"></a-entity>
+<a-entity position="4.366 1.338 0.069" id="key" geometry="height:0.0;width:0.28;depth:0.65" material="emissive:#d5cfaa;roughness:1;flatShading:true;opacity:0.89;transparent:true;src:#MKey" visible="true" rotation="0 90 0"></a-entity>
 
 
 
@@ -109,7 +109,7 @@ var PlantPot = document.querySelector('#plantpot')
 var LightBulb = document.querySelector('#Lightbulb')
 var Lamp = document.querySelector('#lamp')
 var Drawer = document.querySelector('#drawer')
-var Key = document.querySelector('#key')
+var EKey = document.querySelector('#key')
 var Door = document.querySelector('#door')
 var Manhole = document.querySelector('#manhole')
 var time = 120;
@@ -147,13 +147,13 @@ function SetTimer(){
     });
     Drawer.addEventListener('click', function (){
         console.log('drawer!');
-
-        Key.setAttribute('visible', 'true');
+        EKey.setAttribute('visible', 'true');
         IsKeyFound = true;
-    
     });
     Door.addEventListener('click', function (){
+      console.log('Door!');
       if (IsKeyFound === true){
+
         Fail();
       }
     });
