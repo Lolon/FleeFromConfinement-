@@ -19,8 +19,8 @@
     <img id="wall" src="assets/walls.png">
     <img id="floor" src="assets/floor.png">
     <img id="ceiling" src="assets/ceiling.png">
-    <img id="door" src="assets/door.png">
-    <img id="manhole" src="assets/manhole.png">
+    <img id="Mdoor" src="assets/door.png">
+    <img id="Mmanhole" src="assets/manhole.png">
     <img id="wood" src="assets/wood.png">
     <img id="Mkey" src="assets/key.png">
 
@@ -38,9 +38,9 @@
                         <a-light tpe="point" color="#fcf6c7" intensity="0.5" decay="1" distance="7" position="0 4.544 0" light="decay:1.54;distance:7.39;intensity:1;type:point;color:#83861a"></a-light>
 
 <!-- all the objects -->
-<a-entity position="0 2.108 -5.409" id="door" geometry="width:3;height:4.32" material="roughness:0.54;src: #door" class="scene"></a-entity>
+<a-entity position="0 2.108 -5.409" id="door" geometry="width:3;height:4.32" material="roughness:0.54;src: #Mdoor" class="scene"></a-entity>
 <a-entity position="-1.616 0.394 3.521" id="bed" geometry="width:6.73;depth:2.98" material="roughness:1;color:#8486ec"></a-entity>
-<a-entity position="-3.815 -0.44 -3.87" id="manhole" geometry="primitive:cylinder" material="src: #manhole; opacity: 0.9; emmisive:#0c0c0c" class="scene"></a-entity>
+<a-entity position="-3.815 -0.44 -3.87" id="manhole" geometry="primitive:cylinder" material="src: #Mmanhole; opacity: 0.9; emmisive:#0c0c0c" class="scene"></a-entity>
 <a-entity position="3.841 0.43 3.878" id="table" geometry="height:1.73;depth:2.01;width:2" material="src: #wood"></a-entity>
 <a-entity position="3.792 1.88 3.82" id="lamp" geometry="radiusBottom:0.67;primitive:cone" material="emissiveIntensity:0.2;emissive:#d56715" light="intensity:0;decay:0;color:#ea341a;type:point" class="scene"></a-entity>
 <a-entity position="-5.403 2.592 0.072" rotation="45 0 0" id="shape2" geometry="" material="emissive:#2528b4;flatShading:true" class="scene"></a-entity>
@@ -109,8 +109,8 @@ var LightBulb = document.querySelector('#Lightbulb')
 var Lamp = document.querySelector('#lamp')
 var Drawer = document.querySelector('#drawer')
 var EKey = document.querySelector('#key')
-var Door = document.querySelector('#door')
-var Manhole = document.querySelector('#manhole')
+var EDoor = document.querySelector('#door')
+var EManhole = document.querySelector('#manhole')
 var time = 120;
 var timerpause = false;
 var isLightFound = false;
@@ -149,14 +149,14 @@ function SetTimer(){
         EKey.setAttribute('visible', 'true');
         isKeyFound = true;
     });
-    Door.addEventListener('click', function (){
+    EDoor.addEventListener('click', function (){
       console.log('Door!');
       if (isKeyFound === true){
         console.log('true!');
         Fail();
       }
     });
-    Manhole.addEventListener('click', function (){
+    EManhole.addEventListener('click', function (){
       console.log('manhole!');
       if (isKeyFound === true){
         console.log('true!');
