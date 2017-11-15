@@ -16,6 +16,7 @@
 
 <a-scene>
   <a-assets>
+    <!--textures -->
     <img id="wall" src="assets/walls.png">
     <img id="floor" src="assets/floor.png">
     <img id="ceiling" src="assets/ceiling.png">
@@ -27,19 +28,21 @@
     <img id="red" src="assets/woodRed.png">
     <img id="green" src="assets/woodGreen.png">
     <img id="matress" src="assets/matress.png">
-
+    <!-- models with their corresponding texture-->
     <a-asset-item id="OPlantPot" src="assets/models/PlantPot.obj"></a-asset-item>
     <img id="MPlantPot" src="assets/models/plantPotCol.png">
     <a-asset-item id="OLamp" src="assets/models/lamp.obj"></a-asset-item>
     <img id="Mlamp" src="assets/models/lampCol.png">
     <a-asset-item id="OLight" src="assets/models/light.obj"></a-asset-item>
     <img id="MLight" src="assets/models/lightCol.png">
+    <!--sound -->
+    <audio id="ambient" src="assets/sounds/water drops.mp3" preload="auto"></audio>
 
 
   </a-assets>
 
   <!--the sky! --><a-sky color="#6EBAA7"></a-sky>
-  <!--the basic room with lights--> <a-plane color="#CCC" height="10" width="10" rotation="-90 0 0" src="#floor"></a-plane>
+  <!--the basic room with lights and ambient music--> <a-plane color="#CCC" height="10" width="10" rotation="-90 0 0" src="#floor"></a-plane>
                         <a-plane color="#CCC" height="10" width="10" position="0 7 0" rotation="90 0 0" src="#ceiling"></a-plane>
                         <a-plane color="#CCC" height="7" width="10" position="0 3.5 -5" material="src: #wall" ></a-plane>
                         <a-plane color="#CCC" height="7" width="10" position="0 3.5 5" rotation="0 180 0" material="src: #wall"></a-plane>
@@ -47,6 +50,7 @@
                         <a-plane color="#CCC" height="7" width="10" position="5 3.5 0" rotation="0 -90 0" material="src: #wall"></a-plane>
                         <a-light tpe="ambient" color="#699269" position="0 -0.466 0" light="intensity:0.5;type:ambient"></a-light>
                         <a-light tpe="point" color="#fcf6c7" intensity="0.5" decay="1" distance="7" position="0 4.544 0" light="decay:1.54;distance:7.39;intensity:1;type:point;color:#83861a"></a-light>
+                        <a-sound src="#ambient" position="0 0 0" loop="true" autoplay="true"></a-sound>
 
 <!-- all the objects -->
 <a-entity position="0 2.108 -5.409" id="door" geometry="width:3;height:4.32" material="roughness:0.54;src: #Mdoor" class="scene"></a-entity>
