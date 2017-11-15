@@ -132,7 +132,7 @@ var Drawer = document.querySelector('#drawer')
 var EKey = document.querySelector('#key')
 var EDoor = document.querySelector('#door')
 var EManhole = document.querySelector('#manhole')
-var time = 120;
+var time = 100;
 var timerpause = false;
 var isLightFound = false;
 var isDrawOn = false;
@@ -195,7 +195,7 @@ function SetTimer(){
 
 function Win (){
   var WinScreen = document.querySelector('#WinScreen')
-  if (isFinished === true){
+  if(isFinished === false){
     timerpause = true;
     isFinished = true;
     WinScreen.setAttribute('visible','true');
@@ -208,7 +208,7 @@ function Win (){
 
 function Fail (){
     var FailScreen = document.querySelector('#FailScreen')
-  if (isFinished === true){
+  if (isFinished === false){
       isFinished = true;
       timerpause = true;
       FailScreen.setAttribute('visible','true');
