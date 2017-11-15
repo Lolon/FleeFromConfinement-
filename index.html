@@ -137,6 +137,7 @@ var timerpause = false;
 var isLightFound = false;
 var isDrawOn = false;
 var isKeyFound = false;
+var isFinished = false;
 
 setInterval(SetTimer, 1000);
 
@@ -194,26 +195,31 @@ function SetTimer(){
 
 function Win (){
   var WinScreen = document.querySelector('#WinScreen')
+  if (isFinished === true){
     timerpause = true;
-
+    isFinished = true;
     WinScreen.setAttribute('visible','true');
     WinScreen.setAttribute('position', '0 3.437 -4.539');
     WinScreen.addEventListener('click', function (){
       scene.reload();
     })
-    }
+  }
+}
 
 function Fail (){
     var FailScreen = document.querySelector('#FailScreen')
+  if (isFinished === true){
+      isFinished = true;
       timerpause = true;
       FailScreen.setAttribute('visible','true');
       FailScreen.setAttribute('position', '0 3.437 -4.592');
       EDoor.components.sound.playSound();
-      }
     FailScreen.addEventListener('click', function (){
       scene.reload();
     })
+  }
 }
+
 </script>
 </body>
 </html>
