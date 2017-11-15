@@ -37,6 +37,11 @@
     <img id="MLight" src="assets/models/lightCol.png">
     <!--sound -->
     <audio id="ambient" src="assets/sounds/water drops.mp3" ></audio>
+    <audio id="SFail" src="assets/sounds/fail.mp3" ></audio>
+    <audio id="lightSwitch" src="assets/sounds/light Switch.mp3" ></audio>
+    <audio id="lightBuzz" src="assets/sounds/LightBuzz.mp3" ></audio>
+    <audio id="manhole" src="assets/sounds/manhole.mp3" ></audio>
+    <audio id="soil" src="assets/sounds/soil.mp3" ></audio>
 
 
   </a-assets>
@@ -50,7 +55,8 @@
                         <a-plane color="#CCC" height="7" width="10" position="5 3.5 0" rotation="0 -90 0" material="src: #wall"></a-plane>
                         <a-light tpe="ambient" color="#699269" position="0 -0.466 0" light="intensity:0.5;type:ambient"></a-light>
                         <a-light tpe="point" color="#fcf6c7" intensity="0.5" decay="1" distance="7" position="0 4.544 0" light="decay:1.54;distance:7.39;intensity:1;type:point;color:#83861a"></a-light>
-                        <a-sound src="#ambient" position="0 0 0" loop="true" autoplay="true"></a-sound>
+                        <a-sound src="#ambient" position="0 0 0" loop="true" autoplay="true" volume="2"></a-sound>
+                        <a-sound id="FailSound" src"#SFail" position="0 0 0" volume="2"></a-sound>
 
 <!-- all the objects -->
 <a-entity position="0 2.108 -5.409" id="door" geometry="width:3;height:4.32" material="roughness:0.54;src: #Mdoor" class="scene"></a-entity>
@@ -197,9 +203,11 @@ function Win (){
 
 function Fail (){
     var FailScreen = document.querySelector('#FailScreen')
+    var EFailSound = document.querySelector("#FailSound")
       timerpause = true;
       FailScreen.setAttribute('visible','true');
       FailScreen.setAttribute('position', '0 3.437 -4.592');
+      EFailSound.components.sound.playSound();
       }
     FailScreen.addEventListener('click', function (){
       scene.reload();
